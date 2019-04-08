@@ -11,7 +11,7 @@ runcmd:
 #  - resolv_conf
 
 # Hostname Configuration
-hostname: {{ vm.vm_name }}.{{ vm_net_domain }}
+hostname: {{ vm.vm_name }}.{{ vm.net_domain }}
 
 # Group/User Configuration
 groups:
@@ -63,17 +63,17 @@ ssh_pwauth: False
 
 ### End Fix
 
-#manage_resolv_conf: true
+manage_resolv_conf: true
 
-#resolv_conf:
-#  nameservers:
-#    - '172.16.1.101'
-#  searchdomains:
-#    - {{ vm_net_domain }}
-#  domain: {{ vm_net_domain }}
-#  options:
-#    rotate: true
-#    timeout: 1
+resolv_conf:
+  nameservers:
+    - '172.16.1.101'
+  searchdomains:
+    - {{ vm.net_domain }}
+  domain: {{ vm.net_domain }}
+  options:
+    rotate: true
+    timeout: 1
 
 power_state:
   delay: now
